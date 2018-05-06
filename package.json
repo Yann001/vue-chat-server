@@ -1,0 +1,32 @@
+{
+  "name": "vue-chat-server",
+  "version": "1.0.0",
+  "description": "vue-chat server",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mongoose": "^5.0.15",
+    "mongoose-plugin-autoinc": "^1.1.9",
+    "ws": "^5.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yann001/vue-chat-server.git"
+  },
+  "keywords": [
+    "vue",
+    "node",
+    "websocket",
+    "mongodb"
+  ],
+  "author": "Yann",
+  "license": "MIT"
+}
