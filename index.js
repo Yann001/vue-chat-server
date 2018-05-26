@@ -22,12 +22,15 @@ const server = http.createServer( async (req, res) => {
     if (userDoc) {
       res.write(JSON.stringify({
         code: 200,
-        isExist: true
+        isExist: true,
+        user: userDoc
       }));
     } else {
+      let newJoinUser = await new userModel({userName: reqUrl.query.userName}).save();
       res.write(JSON.stringify({
         code: 200,
-        isExist: false
+        isExist: false,
+        user: newJoinUser
       }));
     }
   } else if (req.method === 'GET' && reqUrl.pathname === '/user/getUser') {
@@ -74,14 +77,10 @@ wss.on('connection', async (ws) => {
       let resData = {};
       if (obj.type === 'join') {
         console.log('received message join');
-        let joinUserDoc = await userModel.findOne({userName: obj.user.userName});
-        if (!joinUserDoc) {
-          await new userModel(obj.user).save();
-        }
-        let retUser = userModel.find()
+        let retUser = await userModel.find();
         resData = {
           type: 'join',
-          userLsit: retUser
+          userList: retUser
         }
       } else if (obj.type === 'msg') {
         console.log('received message msg');
