@@ -4,12 +4,10 @@
   "description": "vue-chat server",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "babel-node index.js"
   },
   "dependencies": {
     "mongoose": "^5.0.15",
-    "mongoose-plugin-autoinc": "^1.1.9",
     "ws": "^5.1.0"
   },
   "devDependencies": {

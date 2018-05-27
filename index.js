@@ -5,7 +5,6 @@ import config from './config/config';
 import userModel from './model/user';
 import msgModel from './model/msg';
 import db from './mongodb/db';
-import { join } from 'path';
 
 const server = http.createServer( async (req, res) => {
   const reqUrl = url.parse(req.url, true);
@@ -52,9 +51,7 @@ const server = http.createServer( async (req, res) => {
   // 注意这句！！！
   res.end();
 });
-const WebSocketServer = WebSocket.Server;
-
-const wss = new WebSocketServer({
+const wss = new WebSocket.Server({
   server,
   // port: config.wsPort,
   path: config.wsPath
@@ -105,4 +102,4 @@ wss.on('connection', async (ws) => {
 });
 
 server.listen(config.wsPort);
-console.log('listen port ' + config.wsPort);
+console.log('success listen port ' + config.wsPort);
